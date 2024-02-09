@@ -1,0 +1,182 @@
+/* GENERAL STYLES */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* STYLES FOR THE MAIN CONTAINER */
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(0, 67%, 32%);
+}
+
+.container h1 {
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+}
+
+.container .time {
+    font-size: 25px;
+}
+
+.container button {
+    background: #9393ff;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 25px;
+    margin-top: 60px;
+    cursor: pointer;
+}
+
+.container .dedicado {
+    position: absolute;
+    bottom: 0;
+    margin-bottom:20px;
+}
+
+.container .fa-heart {
+    color: rgb(0, 0, 0);
+}
+
+/* FALLING HEARTS */
+
+@keyframes fall {
+    to {
+        transform: translateY(250vh);
+    }
+}
+
+.hearts {
+    font-size: 30px;
+    position: fixed;
+    top: -1vh;
+    transform: translateY(0%);
+    left: 0;
+    animation: fall 3s ease-in infinite;
+}
+
+/* SLIDER (IMAGES) */
+
+.slider {
+    height: 400px;
+    /* margin: auto; */
+    margin-top: 50px;
+    position: relative;
+    width: 90%;
+    display: none;
+    place-items: center;
+    overflow: hidden;
+}
+
+.slide-track {
+    display: flex;
+    width: calc(250px * 17);
+    animation: scroll 40s linear infinite;
+}
+
+.slide-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px * 8.5));
+    }
+}
+
+.slide {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    perspective: 100px;
+}
+
+img {
+    height: 100%;
+    transition: transform .3s;
+}
+
+img:hover {
+    transform: translateZ(5px);
+    cursor: pointer;
+}
+
+/* GRADIENT SHADOWS */
+
+.slider:before,
+.slider:after {
+    background: linear-gradient(to right, rgba(251, 243, 199, 1) 0%, rgba(251, 243, 199, 0) 100%);
+    content: '';
+    height: 200%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
+
+.slider:before {
+    left: 0;
+    top: 0;
+}
+
+.slider:after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+
+/* MEDIA-QUERIES */
+
+@media (max-width: 400px) {
+
+    .hearts {
+        font-size: 20px;
+        position: fixed;
+        top: -1vh;
+        transform: translateY(0%);
+        left: 0;
+        animation: fall 3s ease-in infinite;
+    }
+
+    .container h1 {
+        color: rgb(94, 94, 94);
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .container .time {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .container .dedicado {
+        font-size: 14px;
+        text-align: center;
+        padding: 0 20px;
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 20px;
+    }
+
+    .slider {
+        width: 100%;
+    }
+}
